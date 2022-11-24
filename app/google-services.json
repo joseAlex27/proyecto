@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "819251747019",
+    "project_id": "proyecto-cab31",
+    "storage_bucket": "proyecto-cab31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819251747019:android:623703b45dccf570eae34e",
+        "android_client_info": {
+          "package_name": "com.proyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819251747019-31b2nb8jihhlij6t9ol83svmd0crk2u9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBD82vOPmzHvVhGvHHIygKBvsdMwfYbp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819251747019-31b2nb8jihhlij6t9ol83svmd0crk2u9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
