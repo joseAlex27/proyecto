@@ -16,5 +16,47 @@
     <string name="menu_gallery">Contactos</string>
     <string name="menu_slideshow">Slideshow</string>
 
+    <string name="msg_nombre">Nombre</string>
+    <string name="msg_descripcion">Descripción</string>
+    <string name="msg_unidades">Unidades</string>
+    <string name="msg_precio">Precio</string>
+    <string name="msg_caducidad">Fecha de caducidad</string>
+
+
+    <string name="bt_addMedicamento">Agregar Medicamento</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="msg_enviar_correo">Enviar correo electrónico</string>
+    <string name="msg_phone_call">Realizar llamada telefónica</string>
+    <string name="msg_whatsapp_send">Enviar mensaje WhatsApp</string>
+    <string name="msg_web_view">Abrir sitio Web</string>
+    <string name="msg_map_view">Ver lugar en mapa</string>
+    <string name="tv_latitud_lb">Latitud</string>
+    <string name="tv_longitud_lb">Longitud</string>
+    <string name="tv_altura_lb">Altura</string>
+    <string name="msg_saludos">Saludos amigos</string>
+    <string name="msg_mensaje_correo">Le escribo este correo para</string>
+    <string name="msg_datos">Faltan datos</string>
+    <string name="error">Error</string>
+
+
+    <string name="msgEscucharAudio">Escuchar nota de audio</string>
+    <string name="msg_imagen">Imagen del lugar</string>
+    <string name="graba_pausa">Graba o pausa grabación</string>
+    <string name="escuchaPlay">Escucha grabación</string>
+    <string name="delete_nota">Borra nota de audio</string>
+    <string name="play_nota">Escuchar nota de audio</string>
+    <string name="rec_stop_nota">Graba o detiene nota de audio</string>
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="rotar_l">Rotar a la izquierda</string>
+    <string name="rotale_r">Rota a la derecha</string>
+    <string name="msg_graba_audio">Grabando nota de audio</string>
+    <string name="msg_detener_audio">Nota de audio detenida</string>
+    <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
+    <string name="msg_subiendo_imagen">Subiendo imagen</string>
+    <string name="todo">Pendiente</string>
+
 
 </resources>

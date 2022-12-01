@@ -7,9 +7,13 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.proyecto.ui.home.HomeFragment"
+        android:name="com.proyecto.ui.medicamento.MedicamentoFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_medicamento" >
+        <action
+            android:id="@+id/action_nav_home_to_addMedicamentoFragment"
+            app:destination="@id/addMedicamentoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +26,13 @@
         android:name="com.proyecto.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/addMedicamentoFragment"
+        android:name="com.proyecto.ui.medicamento.AddMedicamentoFragment"
+        android:label="fragment_add_medicamento"
+        tools:layout="@layout/fragment_add_medicamento" >
+        <action
+            android:id="@+id/action_addMedicamentoFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>
