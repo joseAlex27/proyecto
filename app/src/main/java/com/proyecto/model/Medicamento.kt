@@ -13,8 +13,6 @@ data class Medicamento(
     val fechaCaducidad: String?,
     val rutaAudio: String?,
     val rutaImagen: String?
-
-
 ): Parcelable {
     constructor() :
             this("",

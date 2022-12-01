@@ -28,11 +28,11 @@ class MedicamentoAdapter : RecyclerView.Adapter<MedicamentoAdapter.MedicamentoVi
                 .centerInside()
                 .into(itemBinding.imagen)
 
-           /* itemBinding.vistaFila.setOnClickListener{
+            itemBinding.vistaFila.setOnClickListener{
                 val action = MedicamentoFragmentDirections.
-                actionNavLugarToUpdateLugarFragment2(lugar)
+                actionNavHomeToUpdateMedicamentoFragment2(medicamento)
                 itemView.findNavController().navigate(action)
-            }*/
+            }
         }
     }
 

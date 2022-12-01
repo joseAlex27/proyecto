@@ -24,6 +24,15 @@
 
 
     <string name="bt_addMedicamento">Agregar Medicamento</string>
+    <string name="bt_actualizarMedicamento">Actualizar Medicamento</string>
+    <string name="bt_deleteMedicamento">Eliminar Medicamento</string>
+    <string name="msg_seguro_borrado">Esta seguro?</string>
+    <string name="msg_no">No</string>
+    <string name="msg_si">Si</string>
+    <string name="msg_medicamento_deleted">Medicamento Borrado</string>
+    <string name="msg_medicamento_updated">Medicamento Actualizado</string>
+    <string name="msg_data">Faltan datos!!</string>
+
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

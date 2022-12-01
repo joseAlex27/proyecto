@@ -118,7 +118,7 @@ class AddMedicamentoFragment : Fragment() {
         val imagenFile = imagenUtiles.imagenFile
         if(imagenFile.exists() && imagenFile.isFile && imagenFile.canRead()) {
             val rutaLocal = Uri.fromFile(imagenFile)
-            val rutaNube = "lugares/${Firebase.auth.currentUser?.email}/imagenes/${imagenFile.name}"
+            val rutaNube = "medicamentos/${Firebase.auth.currentUser?.email}/imagenes/${imagenFile.name}"
             val referencia : StorageReference = Firebase.storage.reference.child(rutaNube)
 
             referencia.putFile(rutaLocal)

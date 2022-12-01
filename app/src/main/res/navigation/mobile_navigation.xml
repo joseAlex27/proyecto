@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_home_to_addMedicamentoFragment"
             app:destination="@id/addMedicamentoFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_updateMedicamentoFragment2"
+            app:destination="@id/updateMedicamentoFragment2" />
     </fragment>
 
     <fragment
@@ -29,10 +32,22 @@
     <fragment
         android:id="@+id/addMedicamentoFragment"
         android:name="com.proyecto.ui.medicamento.AddMedicamentoFragment"
-        android:label="fragment_add_medicamento"
+        android:label="Agregar Medicamento"
         tools:layout="@layout/fragment_add_medicamento" >
         <action
             android:id="@+id/action_addMedicamentoFragment_to_nav_home"
             app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateMedicamentoFragment2"
+        android:name="com.proyecto.ui.medicamento.UpdateMedicamentoFragment"
+        android:label="Actualizar Medicamento"
+        tools:layout="@layout/fragment_update_medicamento" >
+        <action
+            android:id="@+id/action_updateMedicamentoFragment2_to_nav_home"
+            app:destination="@id/nav_home" />
+        <argument
+            android:name="medicamento"
+            app:argType="com.proyecto.model.Medicamento" />
     </fragment>
 </navigation>
