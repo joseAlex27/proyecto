@@ -60,6 +60,10 @@ class AddMedicamentoFragment : Fragment() {
             subeAudio()
         }
 
+        binding.etFechaCadu.setOnClickListener {
+            showDatePickerDialog()
+        }
+
         //Se inicializa el objeto audioutiles
         audioUtiles = AudioUtiles(
             requireActivity(),
@@ -147,6 +151,8 @@ class AddMedicamentoFragment : Fragment() {
         val fecha = binding.etFechaCadu.text.toString()
 
 
+
+
         if(nombre.isNotEmpty()) {// si puedo agregar un lugar
             val medicamento = Medicamento("", nombre,descripcion,unidades,
                 precio,fecha,rutaPublicaAudio,rutaPublicaImagen)
@@ -156,6 +162,15 @@ class AddMedicamentoFragment : Fragment() {
         } else { //mensaje de error
             Toast.makeText(requireContext(),"Faltan datos!!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerFragment{ day, month, year -> onDateSelected(day,month,year) }
+        datePicker.show(childFragmentManager, "datePicker")
+    }
+
+    fun onDateSelected(day: Int, month: Int, year: Int) {
+        binding.etFechaCadu.setText("$day/${month+1}/$year")
     }
 
 
