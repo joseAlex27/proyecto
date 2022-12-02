@@ -51,7 +51,10 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/msg_caducidad"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:clickable="false"
+            android:focusable="false"
+            />
 
         <Button
             android:id="@+id/btDeleteMedicamento"

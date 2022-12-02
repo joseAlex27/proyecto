@@ -63,7 +63,9 @@ class UpdateMedicamentoFragment : Fragment() {
         binding.etFechaCadu.setText(args.medicamento.fechaCaducidad)
 
 
-
+        binding.etFechaCadu.setOnClickListener {
+            showDatePickerDialog()
+        }
         binding.btAtualizarMedicamento.setOnClickListener{ updateMedicamento() }
         binding.btDeleteMedicamento.setOnClickListener() { deleteMedicamento() }
         //binding.btEmail.setOnClickListener() { escribirCorreo() }
@@ -227,6 +229,14 @@ class UpdateMedicamentoFragment : Fragment() {
         } else { //mensaje de error
             Toast.makeText(requireContext(),"Faltan datos!!",Toast.LENGTH_LONG).show()
         }
+    }
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerFragment{ day, month, year -> onDateSelected(day,month,year) }
+        datePicker.show(childFragmentManager, "datePicker")
+    }
+
+    fun onDateSelected(day: Int, month: Int, year: Int) {
+        binding.etFechaCadu.setText("$day/${month+1}/$year")
     }
 
     override fun onDestroyView() {
