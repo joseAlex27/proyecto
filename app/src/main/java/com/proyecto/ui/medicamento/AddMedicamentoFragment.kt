@@ -54,6 +54,8 @@ class AddMedicamentoFragment : Fragment() {
         medicamentoViewModel =
             ViewModelProvider(this)[MedicamentoViewModel::class.java]
         _binding = FragmentAddMedicamentoBinding.inflate(inflater,container,false)
+
+
         binding.btAgregar.setOnClickListener{
             binding.progressBar.visibility = ProgressBar.VISIBLE
             binding.msgMensaje.text = "Subiendo Nota Audio"

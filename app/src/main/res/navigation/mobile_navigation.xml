@@ -20,9 +20,16 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.proyecto.ui.gallery.GalleryFragment"
+        android:name="com.proyecto.ui.persona.PersonaFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_persona" >
+        <action
+            android:id="@+id/action_nav_gallery_to_addPersonaFragment"
+            app:destination="@id/addPersonaFragment" />
+        <action
+            android:id="@+id/action_nav_gallery_to_updatePersonaFragment"
+            app:destination="@id/updatePersonaFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -49,5 +56,26 @@
         <argument
             android:name="medicamento"
             app:argType="com.proyecto.model.Medicamento" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPersonaFragment"
+        android:name="com.proyecto.ui.persona.AddPersonaFragment"
+        android:label="Agregar Contacto"
+        tools:layout="@layout/fragment_add_persona" >
+        <action
+            android:id="@+id/action_addPersonaFragment_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
+    <fragment
+        android:id="@+id/updatePersonaFragment"
+        android:name="com.proyecto.ui.persona.UpdatePersonaFragment"
+        android:label="Actualizar contacto"
+        tools:layout="@layout/fragment_update_persona" >
+        <action
+            android:id="@+id/action_updatePersonaFragment_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+        <argument
+            android:name="persona"
+            app:argType="com.proyecto.model.Persona" />
     </fragment>
 </navigation>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.medicamento.UpdateMedicamentoFragment">
+    tools:context=".ui.persona.AddPersonaFragment">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,59 +19,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/msg_nombre"
+            android:hint="@string/msg_nombrePersona"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/etDescripcion"
+            android:id="@+id/etPrimerApe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/msg_descripcion"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/msg_primerApe"
+            android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/etUnidades"
+            android:id="@+id/etSegundoApell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/msg_unidades"
+            android:hint="@string/msg_segundoApe"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/etTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/msg_telefono"
             android:inputType="phone" />
 
         <EditText
-            android:id="@+id/etPrecio"
+            android:id="@+id/etDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/msg_precio"
-            android:inputType="numberDecimal" />
+            android:hint="@string/msg_direccion"
+            android:inputType="textLongMessage" />
 
-        <EditText
-            android:id="@+id/etFechaCadu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/msg_caducidad"
-            android:inputType="textPersonName"
-            android:clickable="false"
-            android:focusable="false"
-            />
+
 
         <Button
-            android:id="@+id/btDeleteMedicamento"
+            android:id="@+id/btAgregar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="#26708E"
-            app:cornerRadius="15dp"
-            android:text="@string/bt_deleteMedicamento" />
-
-        <Button
-            android:id="@+id/btAtualizarMedicamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#26708E"
-            android:text="@string/bt_actualizarMedicamento"
+            android:text="@string/bt_addContacto"
             app:cornerRadius="15dp" />
 
 
@@ -89,20 +81,36 @@
             android:textAlignment="center"
             android:visibility="gone" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btPlay"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:id="@+id/bt_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:contentDescription="@string/msgEscucharAudio"
-                android:src="@drawable/ic_play" />
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_photo" />
+
+            <ImageButton
+                android:id="@+id/bt_rota_l"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_rotate_l" />
+
+            <ImageButton
+                android:id="@+id/bt_rota_r"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_rotate_r" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -120,4 +128,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
+
 </ScrollView>

@@ -27,12 +27,26 @@
     <string name="bt_actualizarMedicamento">Actualizar Medicamento</string>
     <string name="bt_deleteMedicamento">Eliminar Medicamento</string>
     <string name="msg_seguro_borrado">Esta seguro?</string>
+    <string name="msg_seguro_borrado_contacto">Esta Seguro de Eliminar el Contacto?</string>
     <string name="msg_no">No</string>
     <string name="msg_si">Si</string>
     <string name="msg_medicamento_deleted">Medicamento Borrado</string>
     <string name="msg_medicamento_updated">Medicamento Actualizado</string>
+    <string name="msg_contacto_updated">Contacto Actualizado</string>
     <string name="msg_data">Faltan datos!!</string>
 
+
+    <string name="msg_nombrePersona">Nombre</string>
+    <string name="msg_primerApe">Primer apellido</string>
+    <string name="msg_segundoApe">Segundo Apellido</string>
+    <string name="msg_telefono">Teléfono</string>
+    <string name="msg_direccion">Dirección</string>
+
+    <string name="bt_addContacto">Agregar Contacto</string>
+    <string name="bt_actualizarContacto">Actualizar Contacto</string>
+    <string name="bt_deleteContacto">Eliminar Contacto</string>
+    <string name="msg_delete_lugar">Eliminar Contacto</string>
+    <string name="msg_contacto_deleted">Contacto Eliminado…</string>
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

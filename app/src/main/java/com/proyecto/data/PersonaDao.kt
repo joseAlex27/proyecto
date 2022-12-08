@@ -8,13 +8,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.ktx.Firebase
 import com.proyecto.model.Medicamento
+import com.proyecto.model.Persona
 
-class MedicamentoDao {
+class PersonaDao {
 
-    //Definiendo la jerarquia donde se gestionan lugares
+    //Definiendo la jerarquia donde se gestionan contactos
     private val colecion1 = "proyectoApp"
     private val usuario = Firebase.auth.currentUser?.email.toString()
-    private val coleccion2 = "misMedicamentos"
+    private val coleccion2 = "misContactos"
 
     ///Conexion a la base de datos en la nube
     private  val firestore: FirebaseFirestore =
@@ -26,54 +27,54 @@ class MedicamentoDao {
             .Builder().build()
     }
 
-    fun saveMedicamento(medicamento: Medicamento) {
+    fun savePersona(persona: Persona) {
         //Un DocumentReference es un enlace a un documento en la nube  json en la nube
         val documento: DocumentReference
-        if(medicamento.id.isEmpty()) { //Es un medicamento nuevo... pues no tiene id
+        if(persona.id.isEmpty()) { //Es un contacto nuevo... pues no tiene id
             documento = firestore
                 .collection(colecion1).
                 document(usuario).
                 collection(coleccion2)
                 .document()
-                medicamento.id = documento.id
-        } else { //el lugar tiene id existe en la nube
+            persona.id = documento.id
+        } else { //el contacto tiene id existe en la nube
             documento = firestore
                 .collection(colecion1)
                 .document(usuario)
                 .collection(coleccion2)
-                .document(medicamento.id)
+                .document(persona.id)
         }
         //ahora se inserta o actualiza el archivo
-        documento.set(medicamento)
+        documento.set(persona)
             .addOnSuccessListener {
-                Log.d("saveMedicamento", "Medicamento agregado o modificado")
+                Log.d("saveContacto", "Contacto agregado o modificado")
             }
             .addOnCanceledListener {
-                Log.e("saveMedicamento","Medicamento no agregado o modificado")
+                Log.e("saveContacto","Contacto no agregado o modificado")
             }
     }
 
-    fun deleteMedicamento(medicamento: Medicamento) {
-        //se valida si el id del medicamento tiene no está vacio... si es asi se borra
-        if(medicamento.id.isNotEmpty()) {
+    fun deletePersona(persona: Persona) {
+        //se valida si el id del contacto tiene no está vacio... si es asi se borra
+        if(persona.id.isNotEmpty()) {
             firestore
                 .collection(colecion1)
                 .document(usuario)
                 .collection(coleccion2)
-                .document(medicamento.id)
+                .document(persona.id)
                 .delete()
                 .addOnSuccessListener {
-                    Log.d("deleteMedicamento", "deleteMedicamento Eliminado")
+                    Log.d("deletePersona", "deletePersona Eliminado")
                 }
                 .addOnCanceledListener {
-                    Log.e("deleteMedicamento","deleteMedicamento No Eliminado")
+                    Log.e("deletePersona","deletePersona No Eliminado")
                 }
         }
     }
 
-    fun getMedicamentos() : MutableLiveData<List<Medicamento>> {
-        //Lista para registrar la info de los medicamentos tomados de la coleccion
-        val listaMedicamentos = MutableLiveData<List<Medicamento>>()
+    fun getPersonas() : MutableLiveData<List<Persona>> {
+        //Lista para registrar la info de los contactos tomados de la coleccion
+        val listaPersonas = MutableLiveData<List<Persona>>()
 
         firestore
             .collection(colecion1)
@@ -85,22 +86,17 @@ class MedicamentoDao {
                 }
                 if(instantanea != null){ // se logro recuperar la info
                     //y hay informacion
-                    val lista = ArrayList<Medicamento>()
+                    val lista = ArrayList<Persona>()
                     //Recorro la instantanea el json a Lugar
                     instantanea.documents.forEach{
-                        val medicamento = it.toObject(Medicamento::class.java)
-                        if(medicamento !=null) { //su se pudo convertir a un lugar
-                            lista.add(medicamento)
+                        val persona = it.toObject(Persona::class.java)
+                        if(persona !=null) { //su se pudo convertir a un lugar
+                            lista.add(persona)
                         }
                     }
-                    listaMedicamentos.value = lista
+                    listaPersonas.value = lista
                 }
             }
-        return listaMedicamentos
+        return listaPersonas
     }
-
-
-
-
-
 }

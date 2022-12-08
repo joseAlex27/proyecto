@@ -14,7 +14,7 @@ class MedicamentoAdapter : RecyclerView.Adapter<MedicamentoAdapter.MedicamentoVi
     private var listaMedicamentos= emptyList<Medicamento>()
 
     inner class MedicamentoViewHolder(private val itemBinding: MedicamentoFilaBinding) :
-        RecyclerView.ViewHolder(itemBinding.root){
+        RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(medicamento: Medicamento) {
             itemBinding.tvNombre.text = medicamento.nombre
             itemBinding.tvDescripcion.text = medicamento.descripcion

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Este permiso es para hacer llamadas telefonicas -->
+    <!-- este permiso es para hacer llamadas telefonicas -->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <!-- Estos permisos  son para acceder al GPS -->
