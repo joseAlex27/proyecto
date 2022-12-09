@@ -2,6 +2,13 @@ package com.proyecto.ui.medicamento
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlarmManager
+import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -14,6 +21,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -29,6 +37,7 @@ import com.proyecto.databinding.FragmentMedicamentoBinding
 import com.proyecto.model.Medicamento
 import com.proyecto.utiles.AudioUtiles
 import com.proyecto.viewmodel.MedicamentoViewModel
+import java.util.*
 
 
 class AddMedicamentoFragment : Fragment() {
@@ -43,6 +52,8 @@ class AddMedicamentoFragment : Fragment() {
     //Para capturar la imagen del lugar
     private lateinit var tomarFotoActivity: ActivityResultLauncher<Intent>
     private lateinit var imagenUtiles: ImagenUtiles
+
+
 
 
 
@@ -95,7 +106,6 @@ class AddMedicamentoFragment : Fragment() {
             tomarFotoActivity)
 
         return binding.root
-
     }
 
     private fun subeAudio() {
@@ -152,18 +162,74 @@ class AddMedicamentoFragment : Fragment() {
         val precio = binding.etPrecio.text.toString().toDouble()
         val fecha = binding.etFechaCadu.text.toString()
 
-
-
-
         if(nombre.isNotEmpty()) {// si puedo agregar un lugar
             val medicamento = Medicamento("", nombre,descripcion,unidades,
                 precio,fecha,rutaPublicaAudio,rutaPublicaImagen)
             medicamentoViewModel.saveMedicamento(medicamento)
+
+            createNotificationChannel()
+
             Toast.makeText(requireContext(),"Medicamento Agregado", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_addMedicamentoFragment_to_nav_home)
         } else { //mensaje de error
             Toast.makeText(requireContext(),"Faltan datos!!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun schudeleNotification(year: Int,month: Int,day: Int) {
+        val intent = Intent(requireContext().applicationContext, Notification::class.java)
+        val title = "Caducidad del Medicamento"
+        val message = "La fecha de caducidad del medicamento"+" " + binding.etNombre?.text.toString()
+        intent.putExtra(titleExtra, title)
+        intent.putExtra(messageExtra, message)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            requireContext().applicationContext,
+            notificationID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManger = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val time = getTime(year,month,day)
+        alarmManger.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            time,
+            pendingIntent
+        )
+        showAlert(time, title, message)
+    }
+
+    private fun showAlert(time: Long, title: String, message: String) {
+        val date = Date(time)
+        val dateFormat = android.text.format.DateFormat.getDateFormat(requireContext())
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Notificación Programada")
+            .setMessage(
+                "Título: " + title +
+                "\nMensaje: " + message +
+                "es: " + dateFormat.format(date))
+            .setPositiveButton("ok"){_,_ ->}
+            .setIcon(com.google.android.material.R.drawable.ic_clock_black_24dp)
+            .show()
+    }
+
+    private fun getTime(year: Int,month: Int,day: Int): Long {
+        val calendar = Calendar.getInstance()
+        calendar.set(year,month,day)
+
+        return calendar.timeInMillis
+    }
+
+    private fun createNotificationChannel() {
+        val name = "Notification Channel"
+        val desc = "A description of the Channel"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(channelID,name,importance)
+        channel.description= desc
+        val notificationManager = requireActivity().getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
     private fun showDatePickerDialog() {
@@ -173,6 +239,7 @@ class AddMedicamentoFragment : Fragment() {
 
     fun onDateSelected(day: Int, month: Int, year: Int) {
         binding.etFechaCadu.setText("$day/${month+1}/$year")
+        schudeleNotification(year,month,day)
     }
 
 
