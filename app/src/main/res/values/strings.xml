@@ -81,5 +81,8 @@
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
     <string name="todo">Pendiente</string>
 
+    <string name="default_web_client_id_r"
+        translatable="false">819251747019-31b2nb8jihhlij6t9ol83svmd0crk2u9.apps.googleusercontent.com</string>
+
 
 </resources>
